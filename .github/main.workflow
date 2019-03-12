@@ -1,16 +1,11 @@
 workflow "Main" {
-  on = "check_run"
   resolves = ["Test action"]
+  on = "pull_request"
 }
 
 action "Test action" {
   uses = "publisher/test-action/action-a@test"
   secrets = ["GITHUB_TOKEN"]
-}
-
-workflow "New workflow" {
-  on = "check_suite"
-  resolves = ["Some action"]
 }
 
 action "Some action" {
