@@ -7,3 +7,13 @@ action "Test action" {
   uses = "publisher/test-action/action-a@test"
   secrets = ["GITHUB_TOKEN"]
 }
+
+workflow "New workflow" {
+  on = "push"
+  resolves = ["GitHub Action for npm"]
+}
+
+action "GitHub Action for npm" {
+  uses = "publisher/test-action/action-a@test"
+  secrets = ["GITHUB_TOKEN"]
+}
