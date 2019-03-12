@@ -1,4 +1,4 @@
-workflow "Main" {
+workflow "PR handler" {
   resolves = ["Test action"]
   on = "pull_request"
 }
@@ -13,9 +13,9 @@ action "Some action" {
   secrets = ["GITHUB_TOKEN"]
 }
 
-workflow "Check run" {
+workflow "Check run handler" {
   resolves = ["publisher/test-action/action-b@test"]
-  on = "check_suite"
+  on = "check_run"
 }
 
 action "publisher/test-action/action-b@test" {
@@ -23,7 +23,7 @@ action "publisher/test-action/action-b@test" {
   secrets = ["GITHUB_TOKEN"]
 }
 
-workflow "check suite" {
+workflow "Check suite handler" {
   on = "check_suite"
   resolves = ["publisher/test-action/action-b@test-1"]
 }
