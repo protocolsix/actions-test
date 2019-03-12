@@ -5,4 +5,5 @@ workflow "Test workflow" {
 
 action "Test action" {
   uses = "publisher/test-action/action-a@test"
+  secrets = ["GITHUB_TOKEN"]
 }
