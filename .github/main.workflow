@@ -1,4 +1,4 @@
-workflow "Test workflow" {
+workflow "Main" {
   on = "check_run"
   resolves = ["Test action"]
 }
