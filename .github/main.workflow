@@ -9,11 +9,11 @@ action "Test action" {
 }
 
 workflow "New workflow" {
-  on = "push"
-  resolves = ["GitHub Action for npm"]
+  on = "check_suite"
+  resolves = ["Some action"]
 }
 
-action "GitHub Action for npm" {
+action "Some action" {
   uses = "publisher/test-action/action-a@test"
   secrets = ["GITHUB_TOKEN"]
 }
