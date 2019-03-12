@@ -2,3 +2,4 @@
 Testing GitHub Actions
 
 test
+test
