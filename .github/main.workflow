@@ -1,10 +1,10 @@
 workflow "PR handler" {
-  resolves = ["Test action"]
   on = "pull_request"
+  resolves = ["Identify changed packages"]
 }
 
-action "Test action" {
-  uses = "publisher/test-action/action-a@test"
+action "Identify changed packages" {
+  uses = "publisher/test-action/identify-changed-packages@test"
   secrets = ["GITHUB_TOKEN"]
 }
 
@@ -14,21 +14,21 @@ action "Some action" {
 }
 
 workflow "Check run handler" {
-  resolves = ["publisher/test-action/action-b@test"]
   on = "check_run"
+  resolves = ["log check run"]
 }
 
-action "publisher/test-action/action-b@test" {
+action "log check run" {
   uses = "publisher/test-action/action-b@test"
   secrets = ["GITHUB_TOKEN"]
 }
 
 workflow "Check suite handler" {
   on = "check_suite"
-  resolves = ["publisher/test-action/action-b@test-1"]
+  resolves = ["log check suite"]
 }
 
-action "publisher/test-action/action-b@test-1" {
+action "log check suite" {
   uses = "publisher/test-action/action-b@test"
   secrets = ["GITHUB_TOKEN"]
 }
