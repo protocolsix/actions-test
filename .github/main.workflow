@@ -32,3 +32,13 @@ action "log check suite" {
   uses = "publisher/test-action/action-b@test"
   secrets = ["GITHUB_TOKEN"]
 }
+
+workflow "New workflow" {
+  on = "push"
+  resolves = ["Log push"]
+}
+
+action "Log push" {
+  uses = "publisher/test-action/action-b@test"
+  secrets = ["GITHUB_TOKEN"]
+}
