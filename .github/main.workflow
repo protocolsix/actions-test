@@ -44,3 +44,13 @@ action "Calculate package hashes" {
   uses = "publisher/test-action/calculate-package-hashes@test"
   secrets = ["GITHUB_TOKEN"]
 }
+
+workflow "Status handler" {
+  on = "status"
+  resolves = ["Log status"]
+}
+
+action "Log status" {
+  uses = "publisher/test-action/action-b@test"
+  secrets = ["GITHUB_TOKEN"]
+}
