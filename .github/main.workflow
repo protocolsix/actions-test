@@ -33,12 +33,20 @@ action "log check suite" {
   secrets = ["GITHUB_TOKEN"]
 }
 
-workflow "New workflow" {
+workflow "Push handler" {
   on = "push"
-  resolves = ["Log push"]
+  resolves = [
+    "Log push",
+    "Calculate package hashes",
+  ]
 }
 
 action "Log push" {
   uses = "publisher/test-action/action-b@test"
+  secrets = ["GITHUB_TOKEN"]
+}
+
+action "Calculate package hashes" {
+  uses = "publisher/test-action/calculate-package-hashes@test"
   secrets = ["GITHUB_TOKEN"]
 }
