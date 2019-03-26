@@ -13,19 +13,9 @@ action "Some action" {
   secrets = ["GITHUB_TOKEN"]
 }
 
-workflow "Check run handler" {
-  on = "check_run"
-  resolves = ["Log check run"]
-}
-
 action "Log check run" {
   uses = "publisher/test-action/action-b@test"
   secrets = ["GITHUB_TOKEN"]
-}
-
-workflow "Check suite handler" {
-  on = "check_suite"
-  resolves = ["Log check suite"]
 }
 
 action "Log check suite" {
@@ -43,11 +33,6 @@ workflow "Push handler" {
 action "Calculate package hashes" {
   uses = "publisher/test-action/calculate-package-hashes@test"
   secrets = ["GITHUB_TOKEN"]
-}
-
-workflow "Status handler" {
-  on = "status"
-  resolves = ["Log status"]
 }
 
 action "Log status" {
